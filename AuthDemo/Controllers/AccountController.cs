@@ -32,7 +32,8 @@ namespace AuthDemo.Controllers
                 id = _id,
                 name = objDto.Name,
                 email = objDto.Email,
-                password = objDto.Password
+                password = objDto.Password,
+                role = objDto.Role
             };
 
             _id++;
@@ -58,7 +59,15 @@ namespace AuthDemo.Controllers
                 return View();
             }
 
-            return RedirectToAction("Index","User",new { id = user.id});
+            // Redirect users based on their role:
+            // - ProUser sees the list of all users (view only)
+            // - DefaultUser sees only their own data
+            if (user.role == AuthDemo.Models.User.RolePro)
+            {
+                return Redirect($"/all?currentUserId={user.id}");
+            }
+
+            return Redirect($"/me/{user.id}");
         }
 
     }

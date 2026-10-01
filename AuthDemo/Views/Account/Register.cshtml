@@ -28,6 +28,15 @@
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
+    <div class="mb-3">
+        <label asp-for="Role" class="form-label"></label>
+        <select asp-for="Role" class="form-select">
+            <option value="DefaultUser">DefaultUser</option>
+            <option value="ProUser">ProUser</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
     <button type="submit" class="btn btn-primary">Register</button>
     <a asp-controller="Account" asp-action="Login" class="btn btn-link">Already have an account? Login</a>
 </form>
