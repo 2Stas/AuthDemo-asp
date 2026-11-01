@@ -59,9 +59,6 @@ namespace AuthDemo.Controllers
                 return View();
             }
 
-            // Redirect users based on their role:
-            // - ProUser sees the list of all users (view only)
-            // - DefaultUser sees only their own data
             if (user.role == AuthDemo.Models.User.RolePro)
             {
                 return Redirect($"/all?currentUserId={user.id}");

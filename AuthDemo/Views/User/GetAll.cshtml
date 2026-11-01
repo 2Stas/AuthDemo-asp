@@ -7,7 +7,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Список користувачів</h2>
-        <a asp-action="Create" class="btn btn-primary">
+        <a asp-controller="Account" asp-action="Register" class="btn btn-primary">
             <i class="bi bi-person-plus"></i> Додати користувача
         </a>
     </div>
@@ -47,7 +47,7 @@
                                 }
                             </td>
                             <td class="text-end">
-                                <form asp-action="Delete" asp-route-id="@user.id" method="post" onsubmit="return confirm('Ви впевнені, що хочете видалити цього користувача?');" class="d-inline">
+                                <form asp-action="Delete" asp-route-id="@user.id" asp-route-currentUserId="@ViewData["CurrentUserId"]" method="post" onsubmit="return confirm('Ви впевнені, що хочете видалити цього користувача?');" class="d-inline">
                                     <button type="submit" class="btn btn-sm btn-outline-danger">
                                         Видалити
                                     </button>
